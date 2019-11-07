@@ -1,5 +1,7 @@
 # @class
 
+The following explanation is write it down in spanish because is difficult to understand it english language xD
+
 ``` objective-c
 @class CustomClass
 
