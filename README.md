@@ -31,5 +31,52 @@ The following explanation is write it down in spanish because is difficult to un
 @end
 ```
 
+Entonces, cuando estas usando la clase, tu puedes crear instancias de la clase, asi tambien, implementar el protocolo con una unica declaracion de importacion.
+
+```objective-c
+#import "CustomClass"
+
+@interface AnotherCustomClass()<CustomClassDelegate>
+
+@property (nonatomic, strong) CustomClass *customClass;
+
+end
+
+@implementation AnotherCustomClass
+
+#pragma mark - CustomClassDelegate Protocol Methods
+
+-(void)CustomClassDidSomething:(CustomClass *)customClass
+{
+  NSLog(@"Custom Class did something!");
+}
+
+-(void)customClass:(CustomClass *)customClass didSomethingWithResponse:(NSObject *)response
+{
+  NSLog(@"Custom Class did something with %@!", response);
+}
+
+-(BOOL)shouldCustomClassDoSomething
+{
+  return YES;
+}
+
+-(BOOL)shouldCustomClass:(CustomClass *)customClass doSomethingWithInput:(NSObject *)input
+{
+  if([input isEqual:YES])
+  {
+    return YES;
+  }
+  return NO;
+}
+
+-(void)doSomething
+{
+  self.customClass = [[CustomClass alloc] init];
+  self.customClass.delegate = self;
+  [self.customClass doSomething];
+  
+}
+```
 
 
